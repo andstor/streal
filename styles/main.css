@@ -1,0 +1,135 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+v2.0 | 20110126
+License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+strike, strong, sub, sup, tt, var,
+u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+  font-family: 'helvetica';
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+li {
+  list-style: none;
+}
+
+.exampleWidth {
+  width: 80%;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/*
+  Article
+*/
+.indexArticle {
+  margin-top: 50px;
+  border: 2px solid #8c8c8c;
+  border-radius: 2px;
+  background-color: #f2f2f2;
+  overflow: auto;
+  cursor: pointer;
+}
+.articleHeader {
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: #fa4b89;
+}
+.indexAside > img {
+  float: left;
+}
+.articleImg {
+  width: inherit;
+  max-width: 100%;
+  height: auto;
+}
+.bildetekst {
+  padding: 10px 0;
+  text-align: center;
+  color: grey;
+}
+.byline {
+  margin-top: 15px;
+  color: grey;
+  text-align: center;
+}
+.article-text {
+  margin-left: 20px;
+  padding: 10px;
+}
+.indexArticle:hover {
+  opacity: 0.8;
+}
+.articleHeader:hover {
+  color: #62bfde;
+}
+a {
+  color: #fa4b89;
+  text-decoration: none;
+}
+a:hover {
+  color: #62bfde;
+}
+/*
+  Grid
+*/
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(12, 8.3333%);
+}
+.grid-sectionArticles {
+  grid-column: 1/10;
+  grid-row: 1;
+}
+.grid-sectionFeatured {
+  grid-column: 10/13;
+  grid-row: 1;
+}
+.grid-firstHalf {
+  grid-column: 1/7;
+  grid-row: 1;
+}
+.grid-secondHalf {
+  grid-column: 7/13;
+  grid-row: 1;
+}
