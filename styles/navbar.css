@@ -12,7 +12,7 @@
 }
 
 .navbar {
-    overflow: hidden;
+    overflow: visible;
 }
 
 .navbar a {
@@ -47,13 +47,20 @@
 }
 
 @media screen and (max-width: 600px) {
-    .navbar li:not(:first-child) {
-        display: none;
+    .navbar li:not(:first-child) a {
+        position: relative;
+        top: 104px;
+    }
+
+    .navbar a {
+        float: none;
+        margin-top: 0px;
     }
 
     .navbar a.hamburgerIcon {
         float: right;
         display: block;
+        margin-top: 30px;
     }
 
     .navbar.responsive {

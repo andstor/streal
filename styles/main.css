@@ -80,6 +80,6 @@ li {
 }
 
 .grid-menu {
-    grid-column: 2/13;
+    grid-column: 1/13;
     grid-row: 1;
 }
