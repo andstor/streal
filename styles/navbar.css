@@ -13,6 +13,7 @@
 
 .navbar {
     overflow: visible;
+    height: 80px;
 }
 
 .navbar a {
@@ -42,14 +43,15 @@
     color: white;
 }
 
-.navbar .hamburgerIcon {
+.navbar #hamburgerIcon {
     display: none;
 }
 
 @media screen and (max-width: 600px) {
-    .navbar li:not(:first-child) a {
+    .navbar li:not(:first-child){
         position: relative;
-        top: 104px;
+        display: none;
+        top: 80px;
     }
 
     .navbar a {
@@ -57,25 +59,18 @@
         margin-top: 0px;
     }
 
-    .navbar a.hamburgerIcon {
+    .navbar a#hamburgerIcon {
         float: right;
         display: block;
-        margin-top: 30px;
+        margin-top: 28px;
+        background-color: transparent;
     }
 
-    .navbar.responsive {
-        position: relative;
+    .navbar a#hamburgerIcon:hover {
+        color: #62bfde;
     }
 
-    .navbar.responsive li.hamburgerIcon {
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
-
-    .navbar.responsive li {
-        float: none;
+    .navbar.responsive li:not(:first-child){
         display: block;
-        text-align: left;
     }
 }

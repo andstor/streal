@@ -60,12 +60,6 @@ li {
     list-style: none;
 }
 
-.exampleWidth {
-    width: 80%;
-    margin: 0 auto;
-    max-width: 1200px;
-}
-
 /*
   Grid
 */
@@ -75,11 +69,21 @@ li {
 }
 
 .grid-logo {
-    grid-column: 1/2;
+    grid-column: 2/3;
     grid-row: 1;
 }
 
 .grid-menu {
-    grid-column: 1/13;
+    grid-column: 2/12;
     grid-row: 1;
+    position: relative;
+
+}
+
+@media screen and (max-width: 600px) {
+    .grid-menu {
+        grid-column: 1/13;
+        grid-row: 1;
+        position: relative;
+    }
 }
