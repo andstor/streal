@@ -98,11 +98,6 @@ li {
     grid-column: 4/10; /*Change to fit featured article*/
 }
 
-.articleSection {
-
-
-}
-
 .articlePageHeader {
     font-size: 30px;
     margin-bottom: 20px;
@@ -133,7 +128,7 @@ li {
 
 .articleFigureRight {
     float: right;
-    margin: 5px 0 10px 5px;
+    margin: 5px 0 5px 10px;
 }
 
 .articlePageContentImg{
