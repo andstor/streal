@@ -1,0 +1,153 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+v2.0 | 20110126
+License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+strike, strong, sub, sup, tt, var,
+u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+    font-family: 'helvetica';
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+/*
+  Grid
+*/
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(12, 8.3333%);
+}
+
+.grid-logo {
+    grid-column: 2/3;
+    grid-row: 1;
+}
+
+.grid-menu {
+    grid-column: 2/12;
+    grid-row: 1;
+    position: relative;
+
+}
+
+@media screen and (max-width: 600px) {
+    .grid-menu {
+        grid-column: 1/13;
+        grid-row: 1;
+        position: relative;
+    }
+}
+
+/*
+
+
+ */
+
+.grid-article   {
+    grid-row: 1;
+    grid-column: 4/10; /*Change to fit featured article*/
+}
+
+.articleSection {
+
+
+}
+
+.articlePageHeader {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #fa4b89;
+}
+
+.articlePageMainFigure {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0 20px 0;
+}
+
+.articlePageMainImage   {
+    width: inherit;
+    max-width: 100%;
+    height: auto;
+}
+
+.articlePageContentFigure  {
+    width: 50%;
+}
+
+.articleFigureLeft  {
+    float: left;
+    margin: 5px 10px 5px 0;
+}
+
+.articleFigureRight {
+    float: right;
+    margin: 5px 0 10px 5px;
+}
+
+.articlePageContentImg{
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+p   {
+    font-size: 120%;
+}
+
+figcaption  {
+    color: #454545;
+    font-size: 80%;
+    clear: both;
+}
