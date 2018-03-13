@@ -1,25 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Streal</title>
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/navbar.css">
-    <script type="text/javascript" src="scripts/main.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Streal</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/navbar.css">
+  <link rel="stylesheet" href="styles/index.css">
+  <script type="text/javascript" src="scripts/main.js"></script>
 </head>
 <body>
 
-<div class="navbar-background" id="navbar-container">
+  <div class="navbar-background" id="navbar-container">
     <nav class="navbar wrapper" id="navbar">
-        <h1 style="color:white" class="grid-logo logoHeader">Logo</h1>
-        <ul class="grid-menu">
-            <li><a href="#" id="hamburgerIcon">&#9776;</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Blog</a></li>
-        </ul>
+      <h1 style="color:white" class="grid-logo logoHeader">Logo</h1>
+      <ul class="grid-menu">
+        <li><a href="#" id="hamburgerIcon">&#9776;</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
     </nav>
-</div>
+  </div>
+
+  <main class="wrapper">
+
+    <section class="category grid-categorie">
+      <div class="selectors grid-selectors">
+        <!-- Selectors -->
+        <label>Device:</label>
+        <select name="Device">
+          <option value="Placeholder" selected>---</option>
+          <option value="Computer">Computer</option>
+          <option value="Mobile">Mobile</option>
+          <option value="Smartwatch">Smartwatch</option>
+          <option value="Peripherals">Peripherals</option>
+        </select>
+        <label>Price:</label>
+        <select name="Price">
+          <option value="Placeholder" selected>---</option>
+          <option value="200">$200</option>
+          <option value="500">$500</option>
+          <option value="$1000">$1000</option>
+        </select>
+        <label>Rating:</label>
+        <select name="Rating">
+          <option value="Placeholder" selected>---</option>
+          <option value="star-1">&#9773;</option>
+          <option value="star-2">&#9773;&#9773;</option>
+          <option value="star-3">&#9773;&#9773;&#9773;</option>
+          <option value="star-4">&#9773;&#9773;&#9773;&#9773;</option>
+          <option value="star-5">&#9773;&#9773;&#9773;&#9773;&#9773;</option>
+        </select>
+      </div>
+      <!-- Button for searching -->
+      <button class="categorieButton" type="button" name="button">
+        Search
+      </button>
+      <!-- Searchbar -->
+      <form class="grid-searchbar" action="" method="GET">
+        <input class="searchbar" type="text" name="q" placeholder="Search..">
+      </form>
+    </section>
+
+  </main>
 
 </body>
 </html>
