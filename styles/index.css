@@ -1,0 +1,87 @@
+/*
+  Categorie
+*/
+
+.category {
+  margin-top: 50px;
+  border: 1px solid black;
+  border-radius: 2px;
+  padding: 10px;
+  background-color: #fafafa;
+}
+
+.categorieButton {
+  float: right;
+  padding: 5px;
+  font-size: 20px;
+  margin-left: 5px;
+  background-color: #fa4b89;
+  color: white;
+  border: 1px solid white;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+}
+.categorieButton:hover {
+  background-color: white;
+  color: #fa4b89;
+  border-color: #fa4b89;
+  cursor: pointer;
+}
+
+.searchbar {
+  float: right;
+  width: 100%;
+  max-width: 50%;
+  font-size: 20px;
+  padding: 5px;
+  border: 1px solid black;
+}
+
+/*
+  Selector styling
+*/
+
+.selectors {
+  float: left;
+}
+
+select {
+  background-color: white;
+  color: black;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 2px;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+select:hover {
+  cursor: pointer;
+}
+
+select > option {
+  color: black;
+}
+
+label {
+  font-size: 20px;
+  color: #595959;
+}
+
+/*
+  Categorie Grid
+*/
+.grid-categorie {
+  grid-row: 1;
+  grid-column: 2/12;
+}
+
+.grid-selectors {
+  grid-row: 1;
+  grid-column: 1/7;
+}
+
+.grid-searchbar {
+  grid-row: 1;
+  grid-column: 6/13;
+}
