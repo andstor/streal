@@ -89,3 +89,55 @@ li {
         position: relative;
     }
 }
+
+/*
+  Article
+*/
+.indexArticle {
+    margin-top: 50px;
+    border: 2px solid #8c8c8c;
+    border-radius: 2px;
+    background-color: #f2f2f2;
+    overflow: auto;
+    cursor: pointer;
+}
+.articleHeader {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #fa4b89;
+}
+.indexAside > img {
+    float: left;
+}
+.articleImg {
+    width: inherit;
+    max-width: 100%;
+    height: auto;
+}
+.bildetekst {
+    padding: 10px 0;
+    text-align: center;
+    color: grey;
+}
+.byline {
+    margin-top: 15px;
+    color: grey;
+    text-align: center;
+}
+.article-text {
+    margin-left: 20px;
+    padding: 10px;
+}
+.indexArticle:hover {
+    opacity: 0.8;
+}
+.articleHeader:hover {
+    color: #62bfde;
+}
+a {
+    color: #fa4b89;
+    text-decoration: none;
+}
+a:hover {
+    color: #62bfde;
+}
