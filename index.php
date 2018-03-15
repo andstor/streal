@@ -1,3 +1,35 @@
+<?php include 'config/config.php'; ?>
+<?php include 'connections/Database.php'; ?>
+<?php include 'helpers/format_helper.php'; ?>
+
+
+<?php
+// Create DB object
+$db = new Database;
+
+// Filter (check URL for category)
+if (isset($_GET['category'])) {
+    $category = $_GET['category'];
+    // Create query
+    $query = "SELECT *
+                FROM article AS p
+                WHERE p.category_id = " . $category;
+    // Run query
+    $article = $db->select($query);
+} else {
+    // Create query
+    $query = "SELECT * FROM article";
+    // Run query
+    $article = $db->select($query);
+}
+
+// Create query
+$query = "SELECT * FROM category";
+// Run query
+$category = $db->select($query);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,10 +62,15 @@
             <label>Device:</label>
             <select name="Device">
                 <option value="Placeholder" selected>---</option>
-                <option value="Computer">Computer</option>
-                <option value="Mobile">Mobile</option>
-                <option value="Smartwatch">Smartwatch</option>
-                <option value="Peripherals">Peripherals</option>
+                <?php if ($category) : ?>
+                    <?php while ($row = $category->fetch_assoc()) : ?>
+                        <option>
+                            <a href="blog.php?category=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a>
+                        </option>
+                    <?php endwhile; ?>
+                <?php else : ?>
+                    <p>No categories yet</p>
+                <?php endif; ?>
             </select>
             <label>Price:</label>
             <select name="Price">
@@ -62,31 +99,32 @@
         </form>
     </section>
 
-
     <section class="articles grid-sectionArticles">
         <!-- Template of an article -->
-        <article class="indexArticle" onmouseout="staticText()" onmouseover="hoverText()">
-            <!-- image side -->
-            <aside class="indexAside grid-firstHalf">
-                <img class="articleImg" src="http://via.placeholder.com/400x260" alt="placeholder">
-            </aside>
-            <!-- Description -->
-            <div class="grid-secondHalf article-text" id="overskrift">
-                <h1 class="articleHeader"><a href="#">Header</a></h1>
-                <h4>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                    pariatur. Excepteur sint occaecat cupidatat non proident,
-                    sunt in culpa.
-                </h4>
-                <h4 class="byline">
-                    <small>av Lorem Ipsum | 9. Januar, 2018</small>
-                </h4>
-            </div>
-        </article>
+        <?php if ($article) : ?>
+            <?php while ($row = $article->fetch_assoc()) : ?>
+                <article class="indexArticle " onmouseout="staticText()" onmouseover="hoverText()">
+                    <a href="article.php?id=<?php echo $row['id']; ?>">
+                    <!-- image side -->
+                    <aside class="indexAside grid-firstHalf">
+                        <img class="articleImg" src="http://via.placeholder.com/400x260" alt="placeholder">
+                    </aside>
+                    <!-- Description -->
+                    <div class="grid-secondHalf article-text" id="overskrift">
+                        <h1 class="articleHeader"><a href="#">Header</a></h1>
+                        <h4>
+                            <?php echo shortenText($row['text']); ?>
+                        </h4>
+                        <h4 class="byline">
+                            <small>written by <?php echo $row['author']; ?> | <?php echo formatDate($row['published']); ?></small>
+                        </h4>
+                    </div>
+                    </a>
+                </article>
+            <?php endwhile; ?>
+        <?php else : ?>
+            <p>There are no posts yet</p>
+        <?php endif; ?>
         <!-- End of template -->
     </section>
     <!-- Featured Section -->
