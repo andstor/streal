@@ -16,7 +16,7 @@ if (isset($_GET['category'])) {
     $article = $db->select($query);
 } else {
     // Create query
-    $query = "SELECT * FROM post";
+    $query = "SELECT * FROM article";
     // Run query
     $article = $db->select($query);
 }
@@ -63,7 +63,7 @@ $category = $db->select($query);
                 <?php if ($category) : ?>
                     <?php while ($row = $category->fetch_assoc()) : ?>
                         <option>
-                            <a href="blog.php?category=<?php echo $row['category_id']; ?>"><?php echo $row['name']; ?></a>
+                            <a href="blog.php?category=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a>
                         </option>
                     <?php endwhile; ?>
                 <?php else : ?>
@@ -107,7 +107,7 @@ $category = $db->select($query);
         <?php if ($article) : ?>
             <?php while ($row = $article->fetch_assoc()) : ?>
                 <article class="indexArticle wrapper" onmouseout="staticText()" onmouseover="hoverText()">
-                    <a href="article.php?id=<?php echo $row['post_id']; ?>">
+                    <a href="article.php?id=<?php echo $row['id']; ?>">
                     <!-- image side -->
                     <aside class="indexAside grid-firstHalf">
                         <img class="articleImg" src="http://via.placeholder.com/400x260" alt="placeholder">
