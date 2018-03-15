@@ -56,7 +56,7 @@ $category = $db->select($query);
 
 <main class="wrapper">
 
-    <section class="category grid-categorie">
+    <section class="category grid-category">
         <div class="selectors grid-selectors">
             <!-- Selectors -->
             <label>Device:</label>
@@ -99,16 +99,11 @@ $category = $db->select($query);
         </form>
     </section>
 
-</main>
-
-
-<main class="exampleWidth wrapper">
-
     <section class="articles grid-sectionArticles">
         <!-- Template of an article -->
         <?php if ($article) : ?>
             <?php while ($row = $article->fetch_assoc()) : ?>
-                <article class="indexArticle wrapper" onmouseout="staticText()" onmouseover="hoverText()">
+                <article class="indexArticle " onmouseout="staticText()" onmouseover="hoverText()">
                     <a href="article.php?id=<?php echo $row['id']; ?>">
                     <!-- image side -->
                     <aside class="indexAside grid-firstHalf">
