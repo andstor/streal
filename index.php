@@ -1,5 +1,7 @@
 <?php include 'config/config.php'; ?>
 <?php include 'connections/Database.php'; ?>
+<?php include 'helpers/format_helper.php'; ?>
+
 
 <?php
 // Create DB object
