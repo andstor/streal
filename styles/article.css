@@ -146,3 +146,8 @@ figcaption  {
     font-size: 80%;
     clear: both;
 }
+
+/* Limit element size of all sub elements of article main text */
+.grid-article > p > * {
+    max-width: 100% !important;
+}

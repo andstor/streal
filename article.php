@@ -1,5 +1,8 @@
 <?php
-	require 'global.php';
+	require 'config/config.php';
+	require 'connections/Database.php';
+
+	$db = new Database();
 
 	if (isset($_GET['post']) && is_numeric($_GET['post'])) {
 		$articleID = substr($_GET['post'], 0, 5);
@@ -9,9 +12,9 @@
 		exit;
 	}
 
-	$sql = "SELECT * FROM article WHERE id = '$articleID' LIMIT 1";
-	$row = $db->query($sql)->fetch_assoc();
-	$db->close();
+	$sql = "SELECT * FROM article WHERE id = $articleID LIMIT 1";
+	$row = $db->select($sql)->fetch_assoc();
+	$db->link->close();
 
 	if (empty($row)) {
 		header('HTTP/1.0 404 Not Found');
@@ -29,6 +32,7 @@
     <link rel="stylesheet" href="styles/navbar.css">
     <script type="text/javascript" src="scripts/main.js"></script>
 </head>
+
 <body>
 
 <div class="navbar-background" id="navbar-container">
@@ -49,7 +53,7 @@
             <figcaption><?php echo $row['caption'] ?></figcaption>
         </figure>
         <h1 class="articlePageHeader"><?php echo $row['title'] ?></h1>
-        <p><?php echo $row['text'] ?></p>
+        <p><?php echo html_entity_decode($row['text']) ?></p>
     </section>
 </main>
 
