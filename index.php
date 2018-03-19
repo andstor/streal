@@ -103,7 +103,7 @@ $category = $db->select($query);
         <!-- Template of an article -->
         <?php if ($article) : ?>
             <?php while ($row = $article->fetch_assoc()) : ?>
-                <article class="indexArticle " onmouseout="staticText()" onmouseover="hoverText()">
+                <article class="indexArticle ">
                     <a href="article.php?id=<?php echo $row['id']; ?>">
                         <!-- image side -->
                         <aside class="indexAside grid-firstHalf">
