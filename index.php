@@ -136,6 +136,7 @@ $category = $db->select($query);
 </main>
 
 <footer class="page-footer">
+<div class="wrapper">
     <div class="footer-content">
         <h5>Footer Content</h5>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab debitis dicta explicabo fugit illum impedit
@@ -156,7 +157,7 @@ $category = $db->select($query);
     <div class="footer-copyright">
         <span>© 2014 Copyright Text</span>
     </div>
-
+</div>
 </footer>
 
 </body>

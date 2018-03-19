@@ -159,7 +159,6 @@ a:hover {
 .page-footer {
     margin-top: 50px;
     padding-top: 30px;
-    display: grid;
     grid-row-gap: 1em;
     grid-template-columns: repeat(12, 1fr);
     background-color: #1a1a1a;
