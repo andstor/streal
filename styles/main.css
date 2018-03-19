@@ -202,6 +202,7 @@ a:hover {
         grid-column: 2/11;
         grid-row: 1;
     }
+
     .footer-links {
         grid-column: 2/11;
         grid-row: 2;
