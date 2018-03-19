@@ -105,20 +105,21 @@ $category = $db->select($query);
             <?php while ($row = $article->fetch_assoc()) : ?>
                 <article class="indexArticle " onmouseout="staticText()" onmouseover="hoverText()">
                     <a href="article.php?id=<?php echo $row['id']; ?>">
-                    <!-- image side -->
-                    <aside class="indexAside grid-firstHalf">
-                        <img class="articleImg" src="http://via.placeholder.com/400x260" alt="placeholder">
-                    </aside>
-                    <!-- Description -->
-                    <div class="grid-secondHalf article-text" id="overskrift">
-                        <h1 class="articleHeader"><a href="#">Header</a></h1>
-                        <h4>
-                            <?php echo shortenText($row['text']); ?>
-                        </h4>
-                        <h4 class="byline">
-                            <small>written by <?php echo $row['author']; ?> | <?php echo formatDate($row['published']); ?></small>
-                        </h4>
-                    </div>
+                        <!-- image side -->
+                        <aside class="indexAside grid-firstHalf">
+                            <img class="articleImg" src="http://via.placeholder.com/400x260" alt="placeholder">
+                        </aside>
+                        <!-- Description -->
+                        <div class="grid-secondHalf article-text" id="overskrift">
+                            <h1 class="articleHeader"><a href="#">Header</a></h1>
+                            <h4>
+                                <?php echo shortenText($row['text']); ?>
+                            </h4>
+                            <h4 class="byline">
+                                <small>written by <?php echo $row['author']; ?>
+                                    | <?php echo formatDate($row['published']); ?></small>
+                            </h4>
+                        </div>
                     </a>
                 </article>
             <?php endwhile; ?>
@@ -133,6 +134,30 @@ $category = $db->select($query);
     </section>
 
 </main>
+
+<footer class="page-footer">
+    <div class="footer-content">
+        <h5>Footer Content</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab debitis dicta explicabo fugit illum impedit
+            laboriosam neque odit provident quae quasi.
+            content.</p>
+    </div>
+
+    <div class="footer-links">
+        <h5>Links</h5>
+        <ul>
+            <li><a href="/index.php">Home</a></li>
+            <li><a href="/index.php">Blog</a></li>
+            <li><a href="/about.php">About</a></li>
+            <li><a href="/post.php">Admin</a></li>
+        </ul>
+    </div>
+
+    <div class="footer-copyright">
+        <span>© 2014 Copyright Text</span>
+    </div>
+
+</footer>
 
 </body>
 </html>
