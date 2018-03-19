@@ -153,12 +153,14 @@ $category = $db->select($query);
             <li><a href="/post.php">Admin</a></li>
         </ul>
     </div>
-
-    <div class="footer-copyright">
-        <span>© 2014 Copyright Text</span>
-    </div>
 </div>
+
+    <div class="footer-copyright-background">
+        <div class="wrapper">
+            <span class="footer-copyright">© 2014 Copyright Text</span>
+        </div>
+    </div>
 </footer>
 
 </body>
-</html>
+</html

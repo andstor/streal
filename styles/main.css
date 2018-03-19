@@ -186,25 +186,27 @@ a:hover {
 }
 
 .footer-copyright {
-    grid-column: 1/13;
+    grid-column: 2/11;
     grid-row: 2;
-    background-color: #fa4b89;
     padding: 10px 0;
 }
 
-.footer-copyright span {
-    margin-left: 8.333%;
+
+.footer-copyright-background {
+    background-color: #fa4b89;
 }
 
 @media screen and (max-width: 600px) {
     .footer-content {
         grid-column: 2/11;
         grid-row: 1;
+        margin-bottom:0.2em;
     }
 
     .footer-links {
         grid-column: 2/11;
         grid-row: 2;
+
     }
 
     .footer-links ul li {
@@ -217,8 +219,11 @@ a:hover {
         margin-right: 0;
     }
 
+
+
     .footer-copyright {
         grid-column: 1/13;
-        grid-row: 3;
+        grid-row: 1;
+        margin: 0 auto;
     }
 }
