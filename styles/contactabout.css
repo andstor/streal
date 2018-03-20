@@ -4,7 +4,6 @@
 .grid-about {
   grid-row: 1;
   grid-column: 2/12;
-
 }
 
 .grid-aboutText {
@@ -23,37 +22,92 @@
   margin-top: 50px;
 }
 
-section > img {
+.aboutimg {
   margin-left: 20px;
   float: right;
 }
 
-.grid-theTeam {
-  grid-row: 2;
-  grid-column: 2/12;
+.aboutIntroHeader {
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: #fa4b89;
 }
 
-.theTeam {
+.aboutArticleHeader {
+  grid-row: 2;
+  grid-column: 2/12;
+  font-size: 30px;
+  color: #fa4b89;
   margin-top: 50px;
 }
 
-.grid-member1 {
-  grid-row: 1;
-  grid-column: 1/5;
+.aboutSection {
+  grid-row: 3;
+  grid-column: 2/12;
 }
 
-.grid-member2 {
-  grid-row: 1;
-  grid-column: 5/9;
+/*
+  About members section
+*/
+
+.contactProfileImage {
+  height: auto;
+  padding: 0 15px 0 0;
+  float: left;
+  display: block;
+  min-width: 245px;
 }
 
-.grid-member3 {
-  grid-row: 1;
-  grid-column: 8/13;
+.contactBox {
+    background: #ffffff;
+    width: 30%;
+    height: 320px;
+    display: inline-block;
+    border-left: 6px solid #fa4b89;
+    min-width: 442px;
+    float: left;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    margin-right: 5.0%;
 }
 
-.name {
+@media (max-width: 1785px) {
+  .CBStart {
+    margin-left: 5%;
+  }
+}
+
+@media (max-width: 1262px) {
+
+  .grid-aboutText {
+    width: 100%;
+  }
+
+  .aboutimg {
+    float: left;
+  }
+
+}
+
+.CBLast {
+  margin-right: 0;
+}
+
+.rowSpacing {
+  margin-top: 50px;
+}
+
+.contentText {
+  margin-top: 80px;
+}
+
+.contactProfileName {
   color: #fa4b89;
   font-size: 20px;
   text-align: center;
+  margin-top: 20px;
+}
+
+.fa {
+  margin-top: 20px;
+  float: left;
 }
