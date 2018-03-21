@@ -2,12 +2,11 @@
 
 	require 'config/config.php';
 	require 'connections/Database.php';
+require 'helpers/helper.php'
 
 	$db = new Database();
 
-	function alert($text) {
-		echo '<script>alert("' . $text . '")</script>';
-	}
+
 
 	// Checks if an article is getting published
 	if (isset($_POST['post'])) {
