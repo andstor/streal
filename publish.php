@@ -2,12 +2,11 @@
 
 	require 'config/config.php';
 	require 'connections/Database.php';
+    require 'helpers/helper.php';
 
 	$db = new Database();
 
-	function alert($text) {
-		echo '<script>alert("' . $text . '")</script>';
-	}
+
 
 	// Saves the results for later when it's going to be used in the menu
 	$categoryResults = $db->select("SELECT * FROM category");

@@ -1,32 +1,51 @@
 <?php include 'config/config.php'; ?>
 <?php include 'connections/Database.php'; ?>
-<?php include 'helpers/format_helper.php'; ?>
+<?php include 'helpers/helper.php'; ?>
 
 
 <?php
 // Create DB object
 $db = new Database;
 
-// Filter (check URL for category)
-if (isset($_GET['category'])) {
-    $category = $_GET['category'];
-    // Create query
-    $query = "SELECT *
-                FROM article AS p
-                WHERE p.category_id = " . $category;
-    // Run query
-    $article = $db->select($query);
-} else {
-    // Create query
-    $query = "SELECT * FROM article";
-    // Run query
-    $article = $db->select($query);
-}
-
-// Create query
 $query = "SELECT * FROM category";
 // Run query
 $category = $db->select($query);
+
+
+$device = "";
+$src_q = "";
+
+if (isset($_GET['device']) || isset($_GET['q'])) {// Create query
+    $device = $_GET['device'];
+    $src_q = $_GET['q'];
+
+
+    $query = "SELECT a.* FROM article AS a INNER JOIN category AS c ON a.category_id = c.id WHERE 1=1 ";
+
+    $filterValues = array();
+
+    if ($device !== "") {
+        $query .= " AND c.name = '$device'";
+    }
+
+    if (strlen($src_q) >= 3 || strlen($src_q) == 0) {
+
+        $query .= " AND (title LIKE '%" . $src_q . "%' OR text LIKE '%" . $src_q . "%')";
+    } else {
+        alert("Minimum serarcqhery is 3 characters!");
+
+    }
+
+
+} else {
+    $query = "SELECT * FROM article LIMIT 4";
+
+}
+$article = $db->select($query);
+
+
+$db->link->close();
+
 ?>
 
 
@@ -57,74 +76,71 @@ $category = $db->select($query);
 <main class="wrapper">
 
     <section class="category grid-category">
-        <div class="selectors grid-selectors">
-            <!-- Selectors -->
-            <label>Device:</label>
-            <select name="Device">
-                <option value="Placeholder" selected>---</option>
-                <?php if ($category) : ?>
-                    <?php while ($row = $category->fetch_assoc()) : ?>
-                        <option>
-                            <a href="blog.php?category=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a>
-                        </option>
-                    <?php endwhile; ?>
-                <?php else : ?>
-                    <p>No categories yet</p>
-                <?php endif; ?>
-            </select>
-            <label>Price:</label>
-            <select name="Price">
-                <option value="Placeholder" selected>---</option>
-                <option value="200">$200</option>
-                <option value="500">$500</option>
-                <option value="$1000">$1000</option>
-            </select>
-            <label>Rating:</label>
-            <select name="Rating">
-                <option value="Placeholder" selected>---</option>
-                <option value="star-1">&#9773;</option>
-                <option value="star-2">&#9773;&#9773;</option>
-                <option value="star-3">&#9773;&#9773;&#9773;</option>
-                <option value="star-4">&#9773;&#9773;&#9773;&#9773;</option>
-                <option value="star-5">&#9773;&#9773;&#9773;&#9773;&#9773;</option>
-            </select>
-        </div>
         <!-- Button for searching -->
-        <button class="categorieButton" type="button" name="button">
-            Search
-        </button>
+
         <!-- Searchbar -->
         <form class="grid-searchbar" action="" method="GET">
-            <input class="searchbar" type="text" name="q" placeholder="Search..">
+            <div class="selectors grid-selectors">
+                <!-- Selectors -->
+                <label>Device:</label>
+                <select name="device">
+
+
+                    <option value="" selected>All</option>
+
+
+                    <?php if ($category) : ?>
+                        <?php while ($row = $category->fetch_assoc()) : ?>
+                            <option value="<?php echo $row['name']; ?>"
+                                <?php
+                                if ($row['name'] === $device) {
+                                    echo 'selected';
+                                }
+                                ?>
+                            >
+                                <?php echo $row['name']; ?>
+                            </option>
+                        <?php endwhile; ?>
+                    <?php else : ?>
+                        <p>No categories yet</p>
+                    <?php endif; ?>
+                </select>
+            </div>
+            <input class="searchbar" type="text" name="q" placeholder="Search.." value="<?php if (!empty($src_q)) {
+                echo $src_q;
+            } ?>">
+            <button class="categorieButton" type="submit" name="submit">
+                Search
+            </button>
         </form>
     </section>
 
     <section class="articles grid-sectionArticles">
         <!-- Template of an article -->
-        <?php if ($article) : ?>
+        <?php if ($article)  : ?>
             <?php while ($row = $article->fetch_assoc()) : ?>
                 <article class="indexArticle ">
-                    <a href="article.php?id=<?php echo $row['id']; ?>">
-                        <!-- image side -->
-                        <aside class="indexAside grid-firstHalf">
-                            <img class="articleImg" src="http://via.placeholder.com/400x260" alt="placeholder">
-                        </aside>
-                        <!-- Description -->
-                        <div class="grid-secondHalf article-text" id="overskrift">
-                            <h1 class="articleHeader"><a href="#">Header</a></h1>
-                            <h4>
-                                <?php echo shortenText($row['text']); ?>
-                            </h4>
-                            <h4 class="byline">
-                                <small>written by <?php echo $row['author']; ?>
-                                    | <?php echo formatDate($row['published']); ?></small>
-                            </h4>
-                        </div>
-                    </a>
+                    <!-- image side -->
+                    <aside class="indexAside grid-firstHalf">
+                        <a href="article.php?post=<?php echo $row['id']; ?>"><img class="articleImg" src="<?php ;
+                            echo $row['cover'] ?>" alt="placeholder"></a>
+                    </aside>
+                    <!-- Description -->
+                    <div class="grid-secondHalf article-text" id="overskrift">
+                        <h1 class="articleHeader"><a href="article.php?post=<?php echo $row['id']; ?>">Header</a>
+                        </h1>
+                        <h4>
+                            <?php echo shortenText($row['text']); ?>
+                        </h4>
+                        <h4 class="byline">
+                            <small>written by <?php echo $row['author']; ?>
+                                | <?php echo formatDate($row['published']); ?></small>
+                        </h4>
+                    </div>
                 </article>
             <?php endwhile; ?>
         <?php else : ?>
-            <p>There are no posts yet</p>
+            <p>There are no posts matching the search criteria.</p>
         <?php endif; ?>
         <!-- End of template -->
     </section>
@@ -136,24 +152,25 @@ $category = $db->select($query);
 </main>
 
 <footer class="page-footer">
-<div class="wrapper">
-    <div class="footer-content">
-        <h5>Footer Content</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab debitis dicta explicabo fugit illum impedit
-            laboriosam neque odit provident quae quasi.
-            content.</p>
-    </div>
+    <div class="wrapper">
+        <div class="footer-content">
+            <h5>Footer Content</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab debitis dicta explicabo fugit illum
+                impedit
+                laboriosam neque odit provident quae quasi.
+                content.</p>
+        </div>
 
-    <div class="footer-links">
-        <h5>Links</h5>
-        <ul>
-            <li><a href="/index.php">Home</a></li>
-            <li><a href="/index.php">Blog</a></li>
-            <li><a href="/about.php">About</a></li>
-            <li><a href="/post.php">Admin</a></li>
-        </ul>
+        <div class="footer-links">
+            <h5>Links</h5>
+            <ul>
+                <li><a href="/index.php">Home</a></li>
+                <li><a href="/index.php">Blog</a></li>
+                <li><a href="/about.php">About</a></li>
+                <li><a href="/post.php">Admin</a></li>
+            </ul>
+        </div>
     </div>
-</div>
 
     <div class="footer-copyright-background">
         <div class="wrapper">
@@ -163,4 +180,4 @@ $category = $db->select($query);
 </footer>
 
 </body>
-</html
+</html>
