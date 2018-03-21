@@ -9,6 +9,9 @@
 		echo '<script>alert("' . $text . '")</script>';
 	}
 
+	// Saves the results for later when it's going to be used in the menu
+	$categoryResults = $db->select("SELECT * FROM category");
+
 	// Checks if an article is getting published
 	if (isset($_POST['post'])) {
 
@@ -139,13 +142,20 @@
 
 	<body>
 		<main class='container'>
-			<form action='#' method='POST' class='publish'>
+			<form action='' method='POST' class='publish'>
 				<fieldset>
 					<legend>Create an article</legend>
 					<input type='text' name='title' placeholder='Title'><br>
 					<input type='text' name='img' placeholder='Ex: http://link/to/image.jpg'><br>
 					<input type='text' name='caption' placeholder='Image caption'><br>
-					<input type='number' name='cat_id' placeholder='Category Id'><br> <!-- CHANGE ME -->
+					<select name='cat_id'>
+						<?php
+							//Lists all categories from database into the dropdown menu
+							while ($row = $categoryResults->fetch_array(MYSQLI_ASSOC)) {
+								echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
+							}
+						?>
+					</select><br>
 					<label>Article text</label><br>
 					<textarea name='text'></textarea><br>
 					<input type='submit' value='Publish' name='post'>
@@ -157,5 +167,6 @@
 				<p>You are allowed to use html tags inside the text box. Please don't do anything stupid. Remember, Jesus is watching.</p>
 			</section>
 		</main>
-	</body>
+
+	</body>					
 </html>
