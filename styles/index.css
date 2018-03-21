@@ -4,14 +4,14 @@
 
 .category {
     margin-top: 50px;
-    border: 1px solid black;
+    border: 1px solid #dedede;
     border-radius: 2px;
     padding: 10px;
     background-color: #fafafa;
 }
 
 .categorieButton {
-    float: right;
+    display: inline-block;
     padding: 5px;
     font-size: 20px;
     margin-left: 5px;
@@ -30,7 +30,7 @@
 }
 
 .searchbar {
-    float: right;
+    display: inline-block;
     width: 100%;
     max-width: 50%;
     font-size: 20px;
