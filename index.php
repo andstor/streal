@@ -7,26 +7,57 @@
 // Create DB object
 $db = new Database;
 
-// Filter (check URL for category)
-if (isset($_GET['category'])) {
-    $category = $_GET['category'];
-    // Create query
-    $query = "SELECT *
-                FROM article AS p
-                WHERE p.category_id = " . $category;
-    // Run query
-    $article = $db->select($query);
-} else {
-    // Create query
-    $query = "SELECT * FROM article";
-    // Run query
-    $article = $db->select($query);
-}
-
-// Create query
 $query = "SELECT * FROM category";
+
 // Run query
 $category = $db->select($query);
+if (isset($_GET['device']) || isset($_GET['price']) || isset($_GET['rating']) || isset($_GET['q'])) {// Create query
+
+
+$lol = array();
+array_push($lol, "SELECT * FROM article");
+
+
+if (isset($_GET['device'])) {
+    $device = $_GET['device'];
+    array_push($lol, " AND WHERE device = '$device'");
+}
+
+if (isset($_GET['price'])) {
+    $price = $_GET['price'];
+    array_push($lol, " AND WHERE device = '$price'");
+}
+
+if (isset($_GET['rating'])) {
+    $rating = $_GET['rating'];
+    array_push($lol, " AND WHERE device = '$rating'");
+}
+
+if (isset($_GET['q'])) {
+    $q = $_GET['q'];
+    array_push($lol,  " AND WHERE device = '$q'");
+}
+
+
+$query = implode($lol);
+function str_replace_first($from, $to, $content)
+{
+    $from = '/'.preg_quote($from, '/').'/';
+
+    return preg_replace($from, $to, $content, 1);
+}
+$result = str_replace_first("AND", "", $query);
+    
+
+echo $result;
+
+//$article = $db->select($query);
+
+} else {
+
+    $query = "SELECT * FROM category";
+}
+
 ?>
 
 
@@ -57,15 +88,21 @@ $category = $db->select($query);
 <main class="wrapper">
 
     <section class="category grid-category">
-        <div class="selectors grid-selectors">
+        <!-- Button for searching -->
+        <button class="categorieButton" type="button" name="button">
+            Search
+        </button>
+        <!-- Searchbar -->
+        <form class="grid-searchbar" action="" method="GET">
+                    <div class="selectors grid-selectors">
             <!-- Selectors -->
             <label>Device:</label>
-            <select name="Device">
+            <select name="device">
                 <option value="Placeholder" selected>---</option>
                 <?php if ($category) : ?>
                     <?php while ($row = $category->fetch_assoc()) : ?>
-                        <option>
-                            <a href="blog.php?category=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a>
+                        <option value="<?php echo $row['name']; ?>">
+                            <?php echo $row['name']; ?>
                         </option>
                     <?php endwhile; ?>
                 <?php else : ?>
@@ -73,14 +110,14 @@ $category = $db->select($query);
                 <?php endif; ?>
             </select>
             <label>Price:</label>
-            <select name="Price">
+            <select name="price">
                 <option value="Placeholder" selected>---</option>
                 <option value="200">$200</option>
                 <option value="500">$500</option>
-                <option value="$1000">$1000</option>
+                <option value="1000">$1000</option>
             </select>
             <label>Rating:</label>
-            <select name="Rating">
+            <select name="rating">
                 <option value="Placeholder" selected>---</option>
                 <option value="star-1">&#9773;</option>
                 <option value="star-2">&#9773;&#9773;</option>
@@ -89,13 +126,8 @@ $category = $db->select($query);
                 <option value="star-5">&#9773;&#9773;&#9773;&#9773;&#9773;</option>
             </select>
         </div>
-        <!-- Button for searching -->
-        <button class="categorieButton" type="button" name="button">
-            Search
-        </button>
-        <!-- Searchbar -->
-        <form class="grid-searchbar" action="" method="GET">
             <input class="searchbar" type="text" name="q" placeholder="Search..">
+            <input type="submit" value="Submit">
         </form>
     </section>
 
@@ -104,14 +136,14 @@ $category = $db->select($query);
         <?php if ($article) : ?>
             <?php while ($row = $article->fetch_assoc()) : ?>
                 <article class="indexArticle ">
-                    <a href="article.php?id=<?php echo $row['id']; ?>">
+                    <a href="article.php?post=<?php echo $row['id']; ?>">
                         <!-- image side -->
                         <aside class="indexAside grid-firstHalf">
-                            <img class="articleImg" src="http://via.placeholder.com/400x260" alt="placeholder">
+                            <img class="articleImg" src="<?php echo $row['cover']?>" alt="placeholder">
                         </aside>
                         <!-- Description -->
                         <div class="grid-secondHalf article-text" id="overskrift">
-                            <h1 class="articleHeader"><a href="#">Header</a></h1>
+                            <h1 class="articleHeader"><a href="article.php?post=<?php echo $row['id']; ?>">Header</a></h1>
                             <h4>
                                 <?php echo shortenText($row['text']); ?>
                             </h4>
