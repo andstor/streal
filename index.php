@@ -9,54 +9,41 @@ $db = new Database;
 
 $query = "SELECT * FROM category";
 
-// Run query
-$category = $db->select($query);
-if (isset($_GET['device']) || isset($_GET['price']) || isset($_GET['rating']) || isset($_GET['q'])) {// Create query
-
-
-$lol = array();
-array_push($lol, "SELECT * FROM article");
-
-
-if (isset($_GET['device'])) {
-    $device = $_GET['device'];
-    array_push($lol, " AND WHERE device = '$device'");
-}
-
-if (isset($_GET['price'])) {
-    $price = $_GET['price'];
-    array_push($lol, " AND WHERE device = '$price'");
-}
-
-if (isset($_GET['rating'])) {
-    $rating = $_GET['rating'];
-    array_push($lol, " AND WHERE device = '$rating'");
-}
-
-if (isset($_GET['q'])) {
-    $q = $_GET['q'];
-    array_push($lol,  " AND WHERE device = '$q'");
-}
-
-
-$query = implode($lol);
 function str_replace_first($from, $to, $content)
 {
     $from = '/'.preg_quote($from, '/').'/';
 
     return preg_replace($from, $to, $content, 1);
 }
-$result = str_replace_first("AND", "", $query);
-    
 
-echo $result;
+// Run query
+$category = $db->select($query);
+if ((isset($_GET['submit']) && $_GET['q'] != null) && (isset($_GET['device']) || isset($_GET['price']) || isset($_GET['rating']) || isset($_GET['q']))) {
+// Create query
 
-//$article = $db->select($query);
+    $lol = array("SELECT * FROM article WHERE");
+
+    // Checks if user has chosen a device
+    if (isset($_GET['device']) && $_GET['device'] != "") {
+        $device = $_GET['device'];
+        array_push($lol, " AND device = '$device'");
+    }
+
+    // Checks if user has written in search bad
+    if (isset($_GET['q']) && $_GET['q'] != "" && $_GET['q'] != null && !empty($_GET['q'])) {
+        $q = $_GET['q'];
+        array_push($lol, " AND title = '$q'");
+    }
+
+    $query = implode($lol);
+
+    $query = str_replace_first("AND", "", $query);
 
 } else {
-
-    $query = "SELECT * FROM category";
+    $query = "SELECT * FROM article";
 }
+
+$article = $db->select($query);
 
 ?>
 
@@ -89,16 +76,16 @@ echo $result;
 
     <section class="category grid-category">
         <!-- Button for searching -->
-        <button class="categorieButton" type="button" name="button">
+        <!--<button class="categorieButton" type="button" name="button">
             Search
-        </button>
+        </button>-->
         <!-- Searchbar -->
         <form class="grid-searchbar" action="" method="GET">
                     <div class="selectors grid-selectors">
             <!-- Selectors -->
             <label>Device:</label>
             <select name="device">
-                <option value="Placeholder" selected>---</option>
+                <option value="" selected></option>
                 <?php if ($category) : ?>
                     <?php while ($row = $category->fetch_assoc()) : ?>
                         <option value="<?php echo $row['name']; ?>">
@@ -109,25 +96,9 @@ echo $result;
                     <p>No categories yet</p>
                 <?php endif; ?>
             </select>
-            <label>Price:</label>
-            <select name="price">
-                <option value="Placeholder" selected>---</option>
-                <option value="200">$200</option>
-                <option value="500">$500</option>
-                <option value="1000">$1000</option>
-            </select>
-            <label>Rating:</label>
-            <select name="rating">
-                <option value="Placeholder" selected>---</option>
-                <option value="star-1">&#9773;</option>
-                <option value="star-2">&#9773;&#9773;</option>
-                <option value="star-3">&#9773;&#9773;&#9773;</option>
-                <option value="star-4">&#9773;&#9773;&#9773;&#9773;</option>
-                <option value="star-5">&#9773;&#9773;&#9773;&#9773;&#9773;</option>
-            </select>
         </div>
+            <input class="categorieButton" type="submit" value="Submit" name="submit">
             <input class="searchbar" type="text" name="q" placeholder="Search..">
-            <input type="submit" value="Submit">
         </form>
     </section>
 
