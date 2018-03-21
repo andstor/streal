@@ -12,8 +12,17 @@
   * Shorten text
   */
   function shortenText($text, $chars = 490) {
+      $length = strlen($text);
+      if ($length > $chars) {
+
+
     $text = substr($text, 0, $chars);
     $text = substr($text, 0, strrpos($text,' '));
     $text = $text."...";
+    }
     return $text;
   }
+
+function alert($text) {
+    echo '<script>alert("' . $text . '")</script>';
+}
