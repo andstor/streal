@@ -2,7 +2,7 @@
 
 	require 'config/config.php';
 	require 'connections/Database.php';
-require 'helpers/helper.php'
+    require 'helpers/helper.php';
 
 	$db = new Database();
 
