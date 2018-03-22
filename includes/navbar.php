@@ -1,6 +1,6 @@
 <div class="navbar-background" id="navbar-container">
     <nav class="navbar wrapper" id="navbar">
-        <h1 class="grid-logo logoHeader">Logo</h1>
+        <h1 class="grid-logo logoHeader">Streal</h1>
         <ul class="grid-menu">
             <li><a href="#" id="hamburgerIcon">&#9776;</a></li>
             <li><a href="/about.php">About</a></li>
