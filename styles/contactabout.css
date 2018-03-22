@@ -76,16 +76,36 @@
   }
 }
 
-@media (max-width: 1262px) {
+@media (max-width: 1265px) {
 
   .grid-aboutText {
     width: 100%;
   }
 
   .aboutimg {
+    margin-top: 30px;
     float: left;
+    margin-left: 0;
+    width: 100%;
+    max-width: 660px;
   }
+}
 
+@media (max-width: 1195px) {
+  .CBStart {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .contactProfileImage {
+    display: none;
+  }
+  .contactBox {
+    width: 100%;
+    min-width: 205px;
+    padding: 10px;
+  }
 }
 
 .CBLast {
@@ -98,6 +118,13 @@
 
 .contentText {
   margin-top: 80px;
+  padding: 5px;
+}
+
+.rolletekst {
+  padding: 10px 5px;
+  text-align: center;
+  color: grey;
 }
 
 .contactProfileName {
