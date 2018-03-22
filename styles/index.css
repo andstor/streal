@@ -75,6 +75,7 @@ label {
 .grid-category {
     grid-row: 1;
     grid-column: 2/12;
+    height: 57px;
 }
 
 .grid-selectors {
