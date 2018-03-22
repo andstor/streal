@@ -1,0 +1,55 @@
+.col-3-4 {
+    display: inline-block;
+    margin-bottom: 0;
+    margin-left: 2%;
+    width: 48%;
+}
+
+.contactIMG {
+    display: inline-block;
+    width: 49%;
+    max-width: 400px;
+}
+
+.contactFieldTitle {
+    margin-bottom: 15px;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.sendButton {
+    display: inline-block;
+    padding: 5px;
+    font-size: 20px;
+    background-color: #fa4b89;
+    color: white;
+    border: 1px solid white;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+}
+
+h1 {
+    margin: 20px 0;
+    line-height: 1em;
+    font-size: large;
+}
+
+.grid-contact {
+    grid-column: 2/12;
+    grid-row: 1;
+}
+
+@media screen and (max-width: 600px) {
+    .col-3-4 {
+        margin-top: 30px;
+        display: block;
+        margin-left: 0px;
+        width: 100%;
+    }
+
+    .contactIMG {
+        display: block;
+        width: 100%;
+
+    }
+}
