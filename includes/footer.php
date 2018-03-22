@@ -11,7 +11,6 @@
         <div class="footer-links">
             <h5>Links</h5>
             <ul>
-                <li><a href="/index.php">Home</a></li>
                 <li><a href="/index.php">Blog</a></li>
                 <li><a href="/about.php">About</a></li>
                 <li><a href="/contact.php">Contact us</a></li>
