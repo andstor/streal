@@ -62,7 +62,7 @@ li {
 }
 
 body main {
-    min-height: calc(100vh - 282px);
+    min-height: calc(100vh - 305px - 46px);
 }
 
 /*
@@ -80,6 +80,8 @@ body main {
     grid-column: 2/3;
     grid-row: 1;
 }
+
+
 
 .grid-menu {
     grid-column: 3/12;
@@ -184,6 +186,7 @@ a:hover {
 .footer-content {
     grid-column: 2/7;
     grid-row: 1;
+    min-height: 150px;
 }
 
 .footer-links {
