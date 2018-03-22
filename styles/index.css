@@ -129,3 +129,18 @@ h3 {
     display: block;
     margin-bottom:10px;
 }
+
+
+@media screen and (max-width: 790px) {
+    .grid-sectionFeatured {
+        grid-column: 2/12;
+        grid-row: 3;
+    }
+
+
+    .grid-sectionArticles {
+
+        grid-row: 2;
+        grid-column: 2/12;
+    }
+}

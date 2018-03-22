@@ -72,32 +72,32 @@ $db->link->close();
 
         <!-- Searchbar -->
         <form class="grid-searchbar" action="" method="GET">
-            <div class="selectors grid-selectors">
-                <!-- Selectors -->
-                <label>Device:</label>
-                <select name="device">
+            <div style="width: 100%;"><div class="selectors grid-selectors">
+                    <!-- Selectors -->
+                    <label>Device:</label>
+                    <select name="device">
 
 
-                    <option value="" selected>All</option>
+                        <option value="" selected>All</option>
 
 
-                    <?php if ($category) : ?>
-                        <?php while ($row = $category->fetch_assoc()) : ?>
-                            <option value="<?php echo $row['name']; ?>"
-                                <?php
-                                if ($row['name'] === $device) {
-                                    echo 'selected';
-                                }
-                                ?>
-                            >
-                                <?php echo $row['name']; ?>
-                            </option>
-                        <?php endwhile; ?>
-                    <?php else : ?>
-                        <p>No categories yet</p>
-                    <?php endif; ?>
-                </select>
-            </div>
+                        <?php if ($category) : ?>
+                            <?php while ($row = $category->fetch_assoc()) : ?>
+                                <option value="<?php echo $row['name']; ?>"
+                                    <?php
+                                    if ($row['name'] === $device) {
+                                        echo 'selected';
+                                    }
+                                    ?>
+                                >
+                                    <?php echo $row['name']; ?>
+                                </option>
+                            <?php endwhile; ?>
+                        <?php else : ?>
+                            <p>No categories yet</p>
+                        <?php endif; ?>
+                    </select>
+                </div></div>
             <input class="searchbar" type="text" name="q" placeholder="Search.." value="<?php if (!empty($src_q)) {
                 echo $src_q;
             } ?>">
