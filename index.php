@@ -10,7 +10,8 @@ $db = new Database;
 $query = "SELECT * FROM category";
 // Run query
 $category = $db->select($query);
-
+$query = "SELECT * FROM article WHERE id = " . FEATURED_ARTICLE_ID;
+$featured_article = $db->select($query);
 
 $device = "";
 $src_q = "";
@@ -71,32 +72,32 @@ $db->link->close();
 
         <!-- Searchbar -->
         <form class="grid-searchbar" action="" method="GET">
-            <div class="selectors grid-selectors">
-                <!-- Selectors -->
-                <label>Device:</label>
-                <select name="device">
+            <div style="width: 100%;"><div class="selectors grid-selectors">
+                    <!-- Selectors -->
+                    <label>Device:</label>
+                    <select name="device">
 
 
-                    <option value="" selected>All</option>
+                        <option value="" selected>All</option>
 
 
-                    <?php if ($category) : ?>
-                        <?php while ($row = $category->fetch_assoc()) : ?>
-                            <option value="<?php echo $row['name']; ?>"
-                                <?php
-                                if ($row['name'] === $device) {
-                                    echo 'selected';
-                                }
-                                ?>
-                            >
-                                <?php echo $row['name']; ?>
-                            </option>
-                        <?php endwhile; ?>
-                    <?php else : ?>
-                        <p>No categories yet</p>
-                    <?php endif; ?>
-                </select>
-            </div>
+                        <?php if ($category) : ?>
+                            <?php while ($row = $category->fetch_assoc()) : ?>
+                                <option value="<?php echo $row['name']; ?>"
+                                    <?php
+                                    if ($row['name'] === $device) {
+                                        echo 'selected';
+                                    }
+                                    ?>
+                                >
+                                    <?php echo $row['name']; ?>
+                                </option>
+                            <?php endwhile; ?>
+                        <?php else : ?>
+                            <p>No categories yet</p>
+                        <?php endif; ?>
+                    </select>
+                </div></div>
             <input class="searchbar" type="text" name="q" placeholder="Search.." value="<?php if (!empty($src_q)) {
                 echo $src_q;
             } ?>">
@@ -113,15 +114,16 @@ $db->link->close();
                 <article class="indexArticle ">
                     <!-- image side -->
                     <aside class="indexAside grid-firstHalf">
-                        <a href="article.php?post=<?php echo $row['id']; ?>"><img class="articleImg" src="<?php ;
-                            echo $row['cover'] ?>" alt="placeholder"></a>
+                        <a href="article.php?post=<?php echo $row['id']; ?>"><img class="articleImg" src="<?php
+                            echo $row['cover']; ?>" alt="<?php
+                            echo $row['caption']; ?>"></a>
                     </aside>
                     <!-- Description -->
                     <div class="grid-secondHalf article-text" id="overskrift">
                         <h1 class="articleHeader"><a href="article.php?post=<?php echo $row['id']; ?>">Header</a>
                         </h1>
                         <h4>
-                            <?php echo shortenText($row['text']); ?>
+                            <?php echo shortenText($row['text'], 300); ?>
                         </h4>
                         <h4 class="byline">
                             <small>written by <?php echo $row['author']; ?>
@@ -135,9 +137,25 @@ $db->link->close();
         <?php endif; ?>
         <!-- End of template -->
     </section>
+
+
     <!-- Featured Section -->
     <section class="grid-sectionFeatured">
+        <?php if ($featured_article) : ?>
+            <?php while ($row = $featured_article->fetch_assoc()) : ?>
+                <aside class="featuredArticle">
+                    <a href="article.php?post=<?php echo $row['id']; ?>"><h3>Featured article</h3></a>
+                    <a href="article.php?post=<?php echo $row['id']; ?>"><img class="featuredArticle-image" src="<?php echo $row['cover'] ?>"
+                                                                              alt="<?php echo $row['caption']; ?>"></a>
+                    <h4>
+                        <?php echo shortenText($row['text'], 400); ?>
+                    </h4>
+                </aside>
+            <?php endwhile; ?>
 
+        <?php else : ?>
+            <p>There are no featured article.</p>
+        <?php endif; ?>
     </section>
 
 </main>
