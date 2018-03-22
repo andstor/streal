@@ -4,7 +4,7 @@
         <ul class="grid-menu">
             <li><a href="#" id="hamburgerIcon">&#9776;</a></li>
             <li><a href="/about.php">About</a></li>
-            <li><a href="/index.php">contact</a></li>
+            <li><a href="/contact.php">contact</a></li>
             <li><a href="/index.php">Blog</a></li>
         </ul>
     </nav>
