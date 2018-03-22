@@ -45,7 +45,7 @@
     -moz-transition: all 0.3s ease-in-out;
 }
 
-h1 {
+.grid-contact h1 {
     margin: 20px 0;
     line-height: 1em;
     font-size: large;

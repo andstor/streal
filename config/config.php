@@ -8,6 +8,6 @@
 
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
-define('DB_PASS', 'streal');
-define('DB_NAME', 'blog');
+define('DB_PASS', '');
+define('DB_NAME', 'streal_blog');
 define('FEATURED_ARTICLE_ID', 6);

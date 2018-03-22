@@ -2,8 +2,12 @@
   navbar
 */
 .logoHeader {
-    font-size: 30px;
+    font-size: 35px;
     padding: 25px 0;
+
+}
+
+.logoHeader a {
     color: #FFFFFF;
 }
 
@@ -17,7 +21,7 @@
     height: 80px;
 }
 
-.navbar a {
+.navbar .grid-menu a {
     float: right;
     display: block;
     color: white;
@@ -51,19 +55,19 @@
         top: 80px;
     }
 
-    .navbar a {
+    .navbar .grid-menu a {
         float: none;
         margin-top: 0px;
     }
 
-    .navbar a#hamburgerIcon {
+    .navbar .grid-menu a#hamburgerIcon {
         float: right;
         display: block;
         margin-top: 28px;
         background-color: transparent;
     }
 
-    .navbar a#hamburgerIcon:hover {
+    .navbar .grid-menu a#hamburgerIcon:hover {
         color: #62bfde;
     }
 
