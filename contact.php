@@ -11,16 +11,8 @@
 </head>
 <body>
 
-<div class="navbar-background" id="navbar-container">
-    <nav class="navbar wrapper" id="navbar">
-        <h1 style="color:white" class="grid-logo logoHeader">Logo</h1>
-        <ul class="grid-menu">
-            <li><a href="#" id="hamburgerIcon">&#9776;</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Blog</a></li>
-        </ul>
-    </nav>
-</div>
+<?php include_once 'includes/navbar.php' ?>
+
 
 <main class="wrapper">
     <section class="grid-contact">
@@ -61,33 +53,8 @@
 
 </main>
 
-<footer class="page-footer">
-    <div class="wrapper">
-        <div class="footer-content">
-            <h5>Footer Content</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab debitis dicta explicabo fugit illum
-                impedit
-                laboriosam neque odit provident quae quasi.
-                content.</p>
-        </div>
+<?php include_once 'includes/footer.php' ?>
 
-        <div class="footer-links">
-            <h5>Links</h5>
-            <ul>
-                <li><a href="/index.php">Home</a></li>
-                <li><a href="/index.php">Blog</a></li>
-                <li><a href="/about.php">About</a></li>
-                <li><a href="/post.php">Admin</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="footer-copyright-background">
-        <div class="wrapper">
-            <span class="footer-copyright">© 2014 Copyright Text</span>
-        </div>
-    </div>
-</footer>
 
 </body>
 </html>
