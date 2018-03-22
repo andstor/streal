@@ -137,7 +137,9 @@ h3 {
         grid-row: 3;
     }
 
-
+    .featuredArticle {
+        margin-left: 0;
+    }
     .grid-sectionArticles {
 
         grid-row: 2;
