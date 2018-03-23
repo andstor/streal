@@ -20,15 +20,16 @@ if (isset($_POST['post'])) {
 
     // Saves the super globals to easily readable variables
     $title = $_POST['title'];
-    $img = $_POST['img'];
+    $img_link = $_POST['img'];
     $caption = $_POST['caption'];
     $cat = $_POST['cat_id'];
+    $author = $_POST['author'];
     $text = $_POST['text'];
 
     // Checks if the required fields aren't empty and cleans user input
-    if (isset($title) && isset($img) && isset($cat) && isset($text)) {
+    if ($title !== "" && $img_link !== "" && $text !== "" && $author !== "") {
         $title = preg_replace('/[^A-Za-z0-9 æ\ø\å\Æ\Ø\Å\-\&]/', '', (substr($db->link->real_escape_string($title), 0, 64)));
-        $img = htmlspecialchars(substr($db->link->real_escape_string($img), 0, 255), ENT_NOQUOTES);
+//        $img = htmlspecialchars(substr($db->link->real_escape_string($img), 0, 255), ENT_NOQUOTES);
         $caption = htmlspecialchars(substr($db->link->real_escape_string($caption), 0, 255), ENT_NOQUOTES);
         $cat = substr($db->link->real_escape_string($cat), 0, 5);
         $text = htmlentities($db->link->real_escape_string($text));
@@ -38,43 +39,30 @@ if (isset($_POST['post'])) {
             $sql = "SELECT id FROM category WHERE id = $cat LIMIT 1";
             $result = $db->select($sql);
 
+
             // Checks if category id written by user exists (change)
             if ($result->num_rows == 1) {
-                $img_header = @get_headers($img, 1);
+                $time = date('Y-m-d H:m:s');
+                $sql = "INSERT INTO article (title, caption, category_id, cover, text, published, author) 
+								VALUES ('$title', '$caption', $cat, '$img_link', '$text', '$time', '$author')";
+                $result = $db->link->query($sql);
 
-                // Checks if image link provided by user exists
-                if (strpos($img_header[0], '404') === false) {
+                echo $sql;
+                $sql = "SELECT id, title, published FROM article WHERE title = '$title' AND published = '$time' LIMIT 1";
+                $result = $db->select($sql);
 
-                    // Checks if referenced file is an image
-                    if (strpos(str_replace("/", " ", $img_header['Content-Type']), 'image') !== false) {
-                        $time = date('Y-m-d H:m:s');
-                        $sql = "INSERT INTO article (title, caption, category_id, cover, text, published) 
-								VALUES ('$title', '$caption', $cat, '$img', '$text', '$time')";
-                        $result = $db->link->query($sql);
-
-                        // Checks if article is published
-                        //	if (isset($result)) {
-                        $sql = "SELECT id, title, published FROM article WHERE title = '$title' AND published = '$time' LIMIT 1";
-                        $result = $db->select($sql);
-
-                        // Confirms that aricle exists within the database
-                        if ($result->num_rows == 1) {
-                            $row = $result->fetch_assoc();
-                            $articleID = $row['id'];
-                            $_SESSION['link'] = '<a href=\'../article.php?post=' . $articleID . '\'>Link to article >>></a>';
-                        } else {
-                            alert('Something went wrong...');
-                        }
-                        /*	}
-                            else {
-                                alert('Couldn\'t post the article.');
-                            }*/
-                    } else {
-                        alert('The file isn\'t an image.');
-                    }
+                // Confirms that aricle exists within the database
+                if ($result->num_rows == 1) {
+                    $row = $result->fetch_assoc();
+                    $articleID = $row['id'];
+                    $_SESSION['link'] = '<a href=\'../article.php?post=' . $articleID . '\'>Link to article >>></a>';
                 } else {
-                    alert('Image doesn\'t exist.');
+                    alert('Something went wrong...');
                 }
+                /*	}
+                    else {
+                        alert('Couldn\'t post the article.');
+                    }*/
             } else {
                 alert('Category id doesn\'t exist.');
             }
@@ -108,19 +96,22 @@ if (isset($_POST['post'])) {
 <main class='wrapper'>
     <section class="grid-publish">
         <br>
-        <form action='' method='POST' class='publish'>
+        <form action='' method='POST' class='publish' enctype="multipart/form-data">
             <fieldset>
                 <legend>Create an article</legend>
                 <input type='text' name='title' placeholder='Title'><br>
                 <input type='text' name='img' placeholder='Ex: http://link/to/image.jpg'><br>
                 <input type='text' name='caption' placeholder='Image caption'><br>
+                <input type='text' name='author' placeholder='Author'><br>
+
                 <select name='cat_id'>
                     <?php
                     //Lists all categories from database into the dropdown menu
                     while ($row = $categoryResults->fetch_array(MYSQLI_ASSOC)) {
                         echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
                     }
-                    ?>
+
+                    $categoryResults->free_result(); ?>
                 </select>
                 <br><br>
                 <br>
