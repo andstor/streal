@@ -28,18 +28,19 @@
                 <fieldset>
                     <label>
                         <h6>Subject</h6>
-                        <input class="contactFieldTitle" type="text" subject="subject" placeholder=""
+                        <input class="contactFieldTitle" type="text" name="subject" placeholder=""
                                required>
                     </label>
 
                     <label>
                         <h6>Message</h6>
+
                         <textarea class="contactFieldTitle" name="message" maxlength="500"></textarea>
                     </label>
 
                 </fieldset>
 
-                <button class="sendButton" type="button" name="button">
+                <button class="categorieButton" type="submit">
                     Send
                 </button>
             </form>

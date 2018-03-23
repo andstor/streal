@@ -74,7 +74,7 @@ $db->link->close();
         <form class="grid-searchbar" action="" method="GET">
             <div style="width: 100%;"><div class="selectors grid-selectors">
                     <!-- Selectors -->
-                    <label>Device:</label>
+                    <label class="deviceLabelName">Device:</label>
                     <select name="device">
 
 
@@ -113,13 +113,13 @@ $db->link->close();
             <?php while ($row = $article->fetch_assoc()) : ?>
                 <article class="indexArticle ">
                     <!-- image side -->
-                    <aside class="indexAside grid-firstHalf">
+                    <aside class="indexAside">
                         <a href="article.php?post=<?php echo $row['id']; ?>"><img class="articleImg" src="<?php
                             echo $row['cover']; ?>" alt="<?php
                             echo $row['caption']; ?>"></a>
                     </aside>
                     <!-- Description -->
-                    <div class="grid-secondHalf article-text" id="overskrift">
+                    <div class="article-text" id="overskrift">
                         <h1 class="articleHeader"><a href="article.php?post=<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a>
                         </h1>
                         <h4>
