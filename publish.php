@@ -47,7 +47,7 @@ if (isset($_POST['post'])) {
 								VALUES ('$title', '$caption', $cat, '$img_link', '$text', '$time')";
                 $result = $db->link->query($sql);
 
-
+                echo $sql;
                 $sql = "SELECT id, title, published FROM article WHERE title = '$title' AND published = '$time' LIMIT 1";
                 $result = $db->select($sql);
 
