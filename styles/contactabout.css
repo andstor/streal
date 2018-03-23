@@ -25,6 +25,8 @@
 .aboutimg {
   margin-left: 20px;
   float: right;
+  max-width: 500px;
+  height: auto;
 }
 
 .aboutIntroHeader {
