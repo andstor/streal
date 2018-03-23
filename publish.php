@@ -43,8 +43,8 @@ if (isset($_POST['post'])) {
             // Checks if category id written by user exists (change)
             if ($result->num_rows == 1) {
                 $time = date('Y-m-d H:m:s');
-                $sql = "INSERT INTO article (title, caption, category_id, cover, text, published) 
-								VALUES ('$title', '$caption', $cat, '$img_link', '$text', '$time')";
+                $sql = "INSERT INTO article (title, caption, category_id, cover, text, published, author) 
+								VALUES ('$title', '$caption', $cat, '$img_link', '$text', '$time', '$author')";
                 $result = $db->link->query($sql);
 
                 echo $sql;
