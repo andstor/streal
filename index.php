@@ -31,7 +31,7 @@ if (isset($_GET['device']) || isset($_GET['q'])) {// Create query
 
     if (strlen($src_q) >= 3 || strlen($src_q) == 0) {
 
-        $query .= " AND (title LIKE '%" . $src_q . "%' OR text LIKE '%" . $src_q . "%')";
+        $query .= " AND (title LIKE '%" . $src_q . "%' OR text LIKE '%" . $src_q . "%') ORDER BY published DESC";
     } else {
         alert("Minimum serarcqhery is 3 characters!");
 
@@ -39,7 +39,7 @@ if (isset($_GET['device']) || isset($_GET['q'])) {// Create query
 
 
 } else {
-    $query = "SELECT * FROM article LIMIT 4";
+    $query = "SELECT * FROM article ORDER BY published DESC LIMIT 4";
 
 }
 $article = $db->select($query);
@@ -72,7 +72,8 @@ $db->link->close();
 
         <!-- Searchbar -->
         <form class="grid-searchbar" action="" method="GET">
-            <div style="width: 100%;"><div class="selectors grid-selectors">
+            <div style="width: 100%;">
+                <div class="selectors grid-selectors">
                     <!-- Selectors -->
                     <label class="deviceLabelName">Device:</label>
                     <select name="device">
@@ -97,7 +98,8 @@ $db->link->close();
                             <p>No categories yet</p>
                         <?php endif; ?>
                     </select>
-                </div></div>
+                </div>
+            </div>
             <input class="searchbar" type="text" name="q" placeholder="Search.." value="<?php if (!empty($src_q)) {
                 echo $src_q;
             } ?>">
@@ -113,21 +115,22 @@ $db->link->close();
             <?php while ($row = $article->fetch_assoc()) : ?>
                 <article class="indexArticle ">
                     <!-- image side -->
-                    <aside class="indexAside">
+                    <figure class="indexAside">
                         <a href="article.php?post=<?php echo $row['id']; ?>"><img class="articleImg" src="<?php
                             echo $row['cover']; ?>" alt="<?php
                             echo $row['caption']; ?>"></a>
-                    </aside>
+                    </figure>
                     <!-- Description -->
                     <div class="article-text" id="overskrift">
-                        <h1 class="articleHeader"><a href="article.php?post=<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a>
+                        <h1 class="articleHeader"><a
+                                    href="article.php?post=<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a>
                         </h1>
                         <h4>
                             <?php echo shortenText($row['text'], 300); ?>
                         </h4>
                         <h4 class="byline">
-                            <small>written by <?php echo $row['author']; ?>
-                                | <?php echo formatDate($row['published']); ?></small>
+                            <author><small>written by <?php echo $row['author']; ?>
+                                | <?php echo formatDate($row['published']); ?></small></author>
                         </h4>
                     </div>
                 </article>
@@ -145,7 +148,8 @@ $db->link->close();
             <?php while ($row = $featured_article->fetch_assoc()) : ?>
                 <aside class="featuredArticle">
                     <a href="article.php?post=<?php echo $row['id']; ?>"><h3>Featured article</h3></a>
-                    <a href="article.php?post=<?php echo $row['id']; ?>"><img class="featuredArticle-image" src="<?php echo $row['cover'] ?>"
+                    <a href="article.php?post=<?php echo $row['id']; ?>"><img class="featuredArticle-image"
+                                                                              src="<?php echo $row['cover'] ?>"
                                                                               alt="<?php echo $row['caption']; ?>"></a>
                     <h4>
                         <?php echo shortenText($row['text'], 349); ?>
