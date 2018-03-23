@@ -120,7 +120,7 @@ $db->link->close();
                     </aside>
                     <!-- Description -->
                     <div class="grid-secondHalf article-text" id="overskrift">
-                        <h1 class="articleHeader"><a href="article.php?post=<?php echo $row['id']; ?>">Header</a>
+                        <h1 class="articleHeader"><a href="article.php?post=<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a>
                         </h1>
                         <h4>
                             <?php echo shortenText($row['text'], 300); ?>
