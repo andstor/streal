@@ -148,7 +148,7 @@ $db->link->close();
                     <a href="article.php?post=<?php echo $row['id']; ?>"><img class="featuredArticle-image" src="<?php echo $row['cover'] ?>"
                                                                               alt="<?php echo $row['caption']; ?>"></a>
                     <h4>
-                        <?php echo shortenText($row['text'], 400); ?>
+                        <?php echo shortenText($row['text'], 349); ?>
                     </h4>
                 </aside>
             <?php endwhile; ?>
