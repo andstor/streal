@@ -124,6 +124,7 @@ body main {
     width: inherit;
     max-width: 300px;
     height: auto;
+    float: left;
 }
 
 .bildetekst {
