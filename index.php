@@ -102,7 +102,8 @@ $db->link->close();
                 echo $src_q;
             } ?>">
             <button class="categorieButton" type="submit" name="submit">
-                Search
+                <p class="searchPlaceholder">Search</p>
+                <img class="searchIcon" src="images/icons/searchIcon.png" alt="icon">
             </button>
         </form>
     </section>
