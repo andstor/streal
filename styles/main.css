@@ -1,0 +1,259 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+v2.0 | 20110126
+License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+strike, strong, sub, sup, tt, var,
+u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+    font-family: 'helvetica';
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+body main {
+    min-height: calc(100vh - 305px - 46px);
+}
+
+/*
+  Grid
+*/
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(12, 8.3333%);
+    max-width: 1800px;
+    margin: 0 auto;
+
+}
+
+.grid-logo {
+    grid-column: 2/3;
+    grid-row: 1;
+}
+
+
+
+.grid-menu {
+    grid-column: 3/12;
+    grid-row: 1;
+    position: relative;
+
+}
+
+@media screen and (max-width: 600px) {
+    .grid-menu {
+        grid-column: 1/13;
+        grid-row: 1;
+        position: relative;
+    }
+}
+
+/*
+  Article
+*/
+.indexArticle {
+    margin-top: 50px;
+    border: 1px solid #dedede;
+    border-radius: 2px;
+    background-color: #f2f2f2;
+    overflow: auto;
+    /*cursor: pointer;*/
+}
+
+.articleHeader {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #fa4b89;
+}
+
+.indexAside > img {
+    display: inline-block;
+}
+
+.articleImg {
+    width: inherit;
+    max-width: 45%;
+    height: auto;
+    float: left;
+    margin-right: 20px;
+}
+
+.bildetekst {
+    padding: 10px 0;
+    text-align: center;
+    color: grey;
+}
+
+.byline {
+    margin-top: 15px;
+    color: grey;
+    text-align: center;
+}
+
+.article-text {
+    margin-left: 20px;
+    padding: 10px;
+}
+
+.indexArticle:hover {
+    /*opacity: 0.8;*/
+}
+
+.articleHeader:hover {
+    color: #62bfde;
+}
+
+a {
+    color: #fa4b89;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #62bfde;
+}
+
+@media  (max-width: 700px) {
+ /* Fix the searchbar thingie, make it kinda responsive */
+
+ .articleImg {
+   float: none;
+   max-width: 100%;
+   margin-right: 0;
+ }
+
+ .article-text {
+   max-width: 100%;
+ }
+
+.deviceLabelName {
+  display: none;
+}
+
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.page-footer {
+    margin-top: 50px;
+    padding-top: 30px;
+    grid-row-gap: 1em;
+    grid-template-columns: repeat(12, 1fr);
+    background-color: #1a1a1a;
+    color: #f5f5f5;
+}
+
+.page-footer h5 {
+    font-size: 1.3em;
+    padding-bottom: 0.6em;
+}
+
+.page-footer li {
+    /*font-size: 1.3em;*/
+    padding-bottom: 0.3em;
+}
+
+.footer-content {
+    grid-column: 2/7;
+    grid-row: 1;
+    min-height: 150px;
+}
+
+.footer-links {
+    grid-column: 9/11;
+    grid-row: 1;
+}
+
+.footer-copyright {
+    grid-column: 2/11;
+    grid-row: 2;
+    padding: 10px 0;
+}
+
+
+.footer-copyright-background {
+    background-color: #fa4b89;
+}
+
+@media screen and (max-width: 600px) {
+    .footer-content {
+        grid-column: 2/11;
+        grid-row: 1;
+        margin-bottom:0.2em;
+    }
+
+    .footer-links {
+        grid-column: 2/11;
+        grid-row: 2;
+
+    }
+
+    .footer-links ul li {
+        display: inline-block;
+        margin-right: 1em;
+    }
+
+    .footer-links ul li:last-child {
+        display: inline-block;
+        margin-right: 0;
+    }
+
+
+
+    .footer-copyright {
+        grid-column: 1/13;
+        grid-row: 1;
+        margin: 0 auto;
+    }
+}

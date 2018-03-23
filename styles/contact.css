@@ -1,0 +1,80 @@
+.col-3-4 {
+    margin-top: 50px;
+    display: inline-block;
+    margin-bottom: 0;
+    width: 59%;
+    padding: 20px;
+    border: 1px solid black;
+    vertical-align: top;
+
+}
+.contact-caption {
+    margin-top: 30px;
+    display: inline-block;
+    margin-bottom: 0;
+    width: 40%;
+    padding: 20px;
+    vertical-align: top;
+    line-height: 1.2em;
+}
+.GoogleDirectionMap {
+    display: inline-block;
+    width: 100%;
+}
+#GoogleDirectionMap{
+    display: inline-block;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.contactFieldTitle {
+    margin-bottom: 15px;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.categorieButton {
+    display: inline-block;
+    padding: 5px;
+    font-size: 20px;
+    margin-left: 5px;
+    background-color: #fa4b89;
+    color: white;
+    border: 1px solid white;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+}
+
+.categorieButton:hover {
+    background-color: white;
+    color: #fa4b89;
+    border-color: #fa4b89;
+    cursor: pointer;
+}
+
+.grid-contact h1 {
+    margin: 20px 0;
+    line-height: 1em;
+    font-size: large;
+}
+
+.grid-contact {
+    grid-column: 2/12;
+    grid-row: 1;
+}
+
+@media screen and (max-width: 600px) {
+    .col-3-4 {
+        margin-top: 30px;
+        display: block;
+        margin-left: 0px;
+        width: 100%;
+    }
+
+    .contact-caption {
+        display: block;
+        width: 100%;
+
+    }
+}

@@ -1,2 +1,5 @@
 # Covers JetBrains IDEs: IntelliJ
 .idea
+
+/ign
+.DS_Store
