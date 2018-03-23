@@ -96,6 +96,14 @@ li {
 .grid-article   {
     grid-row: 1;
     grid-column: 4/10; /*Change to fit featured article*/
+    line-height: 1.2;
+}
+
+@media (max-width: 600px) {
+  .grid-article {
+    grid-row: 1;
+    grid-column: 2/12;
+  }
 }
 
 .articlePageHeader {

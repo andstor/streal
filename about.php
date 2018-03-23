@@ -21,11 +21,9 @@
         <article class="grid-aboutText">
             <h1 class="aboutIntroHeader">About Streal</h1>
             <p>
-                Streal is a revolutionary website where we dont do any research ourselves,
-                but merely base it on others opinion. Its a website that serve as a platform for reccomendations,
+                Streal is a revolutionary website that serve as a platform for recommendations,
                 akin to Metacritic and Rotten Tomatoes, but for gadgets and electronic devices.
-                We strive to find the best content and plagiarize it in the least hidden way.
-                This is the Streal culture.
+                We do heavy research, and strive to bring the best content to you!
             </p>
         </article>
         <img class="aboutimg" src="images/contact_photos/strealitCropped.jpg" alt="placeholder">

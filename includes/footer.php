@@ -2,10 +2,12 @@
     <div class="wrapper">
         <div class="footer-content">
             <h5>Streal</h5>
-            <p>
-                Streal is a revolutionary website where we dont do any research ourselves, but merely base it on others opinion.
-                Its a website that serve as a platform for reccomendations.
-             </p>
+            <p><br>
+                Streal is THE tech blog site.
+                <br>
+                We strive to bring the best content to you!
+
+            </p>
         </div>
 
         <div class="footer-links">

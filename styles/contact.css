@@ -34,15 +34,23 @@
     width: 100%;
 }
 
-.sendButton {
+.categorieButton {
     display: inline-block;
     padding: 5px;
     font-size: 20px;
+    margin-left: 5px;
     background-color: #fa4b89;
     color: white;
     border: 1px solid white;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
+}
+
+.categorieButton:hover {
+    background-color: white;
+    color: #fa4b89;
+    border-color: #fa4b89;
+    cursor: pointer;
 }
 
 .grid-contact h1 {
@@ -70,4 +78,3 @@
 
     }
 }
-
