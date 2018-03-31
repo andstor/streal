@@ -20,6 +20,7 @@
     border: 1px solid white;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
+    float: right;
 }
 
 .categorieButton:hover {
@@ -38,12 +39,31 @@
     border: 1px solid black;
 }
 
-@media  (max-width: 700px) {
+.searchIcon {
+  height: 22px;
+  display: none;
+}
+
+@media  (max-width: 600px) {
 
   .searchbar {
-    max-width: calc(50% - 76px);
+    max-width: calc(40% - 25px);
   }
 
+  .searchPlaceholder {
+    display: none;
+    width: 100%;
+    float: right;
+  }
+
+  .searchIcon {
+    display: block;
+    height: 22px;
+  }
+
+  .categorieButton:hover {
+    background-color: #fa4b89;
+  }
 }
 
 /*
