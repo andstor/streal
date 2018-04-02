@@ -23,7 +23,7 @@
 
     <div class="footer-copyright-background">
         <div class="wrapper">
-            <span class="footer-copyright">© 2014 Copyrights. All rights reserved</span>
+            <span class="footer-copyright">© 2018 Copyrights. All rights reserved</span>
         </div>
     </div>
 </footer>
