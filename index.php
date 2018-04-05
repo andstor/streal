@@ -127,7 +127,7 @@ $db->link->close();
                                     href="article.php?post=<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a>
                         </h1>
                         <h4>
-                            <?php echo shortenText($row['text'], 300); ?>
+                            <?php echo shortenText(strip_tags(html_entity_decode($row['text'])), 300); ?>
                         </h4>
                         <h4 class="byline">
                             <author><small>written by <?php echo $row['author']; ?>
@@ -153,7 +153,7 @@ $db->link->close();
                                                                               src="<?php echo $row['cover'] ?>"
                                                                               alt="<?php echo $row['caption']; ?>"></a>
                     <h4>
-                        <?php echo shortenText($row['text'], 330); ?>
+                        <?php echo shortenText(strip_tags(html_entity_decode($row['text'])), 330); ?>
                     </h4>
                 </aside>
             <?php endwhile; ?>
